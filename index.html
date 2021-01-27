@@ -34,12 +34,18 @@
                      </div>
                   </div>
                </div>
-               <script>
+            <!--    <script>
                   var btn=document.getElementsByClassName('btn')
                   for(var i=0; i<btn.length; i++){
-                    console.log(btn[i])
+                   var add= btn[i].id=='plus'
+                   if(add){
+                     add.addEventListener('click',function(e){
+                       var clk= event.target
+                        console.log(clk)
+                     })
+                   }
                   }
-               </script>
+               </script> -->
 
                <div class="cart-item">
                   <div class="row">
@@ -54,20 +60,12 @@
                            <button  class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <script>
-                           var btn=document.getElementsByClassName('btn')
-                           for(var i=0; i<btn.length; i++){
-                             console.log(btn[i])
-                           }
-                        </script>
+                  
                         <h5>$59</h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
-                  <script>
-                     var formet= document.getElementsByName('value').innerText
-                     console.log(formet)
-                  </script>
+                 
                </div>
 
                <div class="cart-item">
@@ -96,65 +94,49 @@
    <script>
              
       /* ------------------------- */
-            var plusV = document.getElementById('plusValue')
-
-             var defaultVal =plusV.defaultValue;
-
-            
-            var plus=document.getElementById('plus')
-            //console.log(quantity)
-            //defaultVal++
+            var getVal = document.getElementById('plusValue')//getting input type value 1
+            var defaultVal =getVal.defaultValue;// default value 1
+      
+            var plus=document.getElementById('plus') // selecting add button
+           
+            var price=document.getElementById('price').innerText
+            var startSubtotal=document.getElementById('subTotal').innerText=price
+            var startTotal= document.getElementById('total').innerText=price
+           // add button start
              plus.addEventListener('click', function(){
-              /*  if(isNaN(defaultVal) || defaultVal <=0 ){
-                  return null
-               }else{
- */
-             
+      
               defaultVal++ 
-         var price=document.getElementById('price').innerText
-         var nowPrice=parseFloat(price)
-       
-         //console.log(defaultVal)
-         //console.log(nowPrice)
-      var total=parseFloat((defaultVal * nowPrice))
-           // var  total = total + nowPrice * defaultVal
-           // var ssbu = parseFloat(subtotal)
-          
-            var nowTotal= document.getElementById('subTotal').innerText=total
-            var lastTotal= document.getElementById('total').innerText=total
-              /*  } */
-        //console.log(total)
-             })
+              var newPrice=parseFloat(price * defaultVal)
+              var nowStartPrice=document.getElementById('subTotal').innerText=newPrice
+              var nowTotal= document.getElementById('total').innerText=nowStartPrice
+        
+            })
 /* --------------------------------------------------------------------- */
 
 
             var minus=document.getElementById('minus')
-            //console.log(quantity)
+           
             minus.addEventListener('click', function(){
-               //defaultVal--
-               if(isNaN(defaultVal) || defaultVal <=0 ){
-                  return null
+               defaultVal--
+               if(isNaN(defaultVal) || defaultVal <= 0 ){
+                  return 1
                }else{
+                     var price=document.getElementById('price').innerText
+                     var lowPrice=parseFloat(price ) *defaultVal
+                     var nowTotal= document.getElementById('subTotal').innerText
+                     var newPrice=parseFloat(nowTotal)
+                     var total=parseFloat(newPrice - lowPrice)
+               
 
-              
-             
-                var price=document.getElementById('price').innerText
-               var minPrice=parseFloat(price)
-               var nowTotal= document.getElementById('subTotal').innerText
-            var nowPrice=parseFloat(nowTotal)
+                  var subTotal= document.getElementById('subTotal').innerText=total
+                  var totalAmount= document.getElementById('total').innerText=subTotal
+
+               
             
-            //console.log(defaultVal.innerText)
-            //console.log(nowPrice)
-            var total=parseFloat(nowPrice - minPrice)
-            // var ssbu = parseFloat(subtotal)
-
-            var lastMinutTotal= document.getElementById('subTotal').innerText=total
-            var MinutTotal= document.getElementById('total').innerText=total
-
-      
-               } 
-            //console.log(total)
-            })
+            }
+             
+          
+             })
 
    </script>
 </body>
