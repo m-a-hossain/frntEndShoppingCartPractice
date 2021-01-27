@@ -1,3 +1,78 @@
+//functional way
+
+
+/* document.getElementById('case-increase').addEventListener('click',function(){
+  handleProductChange(true);// a onClick event
+})
+
+document.getElementById('case-decrease').addEventListener('click', function(){
+  handleProductChange(false); //a onClick event
+}) */
+
+function handleProductChange(isIncrease){
+        const caseInput=document.getElementById('case-value')
+        const caseCount = parseInt(caseInput.value)
+        /*  const caseNewCount= caseCount+ 1 */
+        if(isIncrease == true){
+          caseNewCount = caseCount+ 1
+        }
+        if(isIncrease == false && caseCount > 0){
+          caseNewCount = caseCount -1
+        }
+        caseInput.value =caseNewCount
+          //console.log(caseNewCount)
+        const caseTotal= caseNewCount * 59
+        const newCaseCount= document.getElementById('case_price').innerText =caseTotal
+    
+}
+
+// row code 
+// document.getElementById('case-increase').addEventListener('click',function(){
+//   //console.log('clicked')
+//   const caseInput=document.getElementById('case-value')
+//   const caseCount = parseInt(caseInput.value)
+//   const caseNewCount= caseCount+ 1
+//   caseInput.value =caseNewCount
+//   //console.log(caseNewCount)
+//   const caseTotal= caseNewCount * 59
+//   const newCaseCount= document.getElementById('case_price').innerText =caseTotal
+  
+// })
+// document.getElementById('case-decrease').addEventListener('click', function(){
+//   const caseInput =document.getElementById('case-value')
+//   const caseCount= parseInt(caseInput.value)
+//   const caseNewCount= caseCount - 1
+//   caseInput.value = caseNewCount
+//   const caseTotal = caseNewCount *59
+//   const newCaseCount =document.getElementById('case_price').innerText= caseTotal
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 
 
 function calculateForPlus(){ 
