@@ -45,7 +45,7 @@
                      <div class="col-md-5 center-item item">
                         <div class="input-group number-spinner">
                            <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input  type="text"  class="form-control text-center" value="1">
+                           <input  type="text" id="plusValue" class="form-control text-center" value="1">
                            <button  class="btn btn-default" id="plus"><i class="fas fa-plus"></i></button>
 
                         </div>
@@ -84,14 +84,14 @@
              
       /* ------------------------- */
             var getVal = document.getElementById('plusValue')//getting input type value 1
-            var defaultVal =getVal.defaultValue;// default value 1
-      
+            var defaultVal =parseFloat(getVal.defaultValue);// default value 1
+      //console.log(defaultVal)
             var plus=document.getElementById('plus') // selecting add button
            
             var price=document.getElementById('price').innerText
             var startSubtotal=document.getElementById('subTotal').innerText=price
             var startTotal= document.getElementById('total').innerText=price
-           // add button start
+           // add button start---------------------------------------------------------
              plus.addEventListener('click', function(){
       
               defaultVal++ 
@@ -120,10 +120,6 @@
                   var subTotal= document.getElementById('subTotal').innerText=total
                   var totalAmount= document.getElementById('total').innerText=subTotal
 
-               
-            
-         
-             
           
              })
 
