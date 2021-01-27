@@ -16,17 +16,17 @@
       <div class="container">
          <div class="cart">
             <div class="col-md-12 col-lg-10 mx-auto">
-               <div class="cart-item">
+               <div class="cart-item ">
                   <div class="row">
                      <div class="col-md-7 center-item">
                         <img src="images/product-1.png" alt="">
                         <h5>iPhone 11 128GB Black</h5>
                      </div>
 
-                     <div class="col-md-5 center-item">
+                     <div class="col-md-5 center-item item">
                         <div class="input-group number-spinner">
                            <button id="minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input id="plusValue" type="text" class="form-control text-center" value="1">
+                           <input type="text" id="plusValue" class="form-control text-center" value="1">
                            <button id="plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
                         <h5>$ <span id="price">1219</span> </h5>
@@ -36,21 +36,21 @@
                </div>
          
 
-               <div class="cart-item">
+               <div class="cart-item ">
                   <div class="row">
                      <div class="col-md-7 center-item mx-auto">
                         <img src="images/product-2.png" alt="">
                         <h5>iPhone 11 Silicone Case - Black</h5>
                      </div>
-                     <div class="col-md-5 center-item">
+                     <div class="col-md-5 center-item item">
                         <div class="input-group number-spinner">
                            <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input  type="text" class="form-control text-center" value="1">
-                           <button  class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <input  type="text"  class="form-control text-center" value="1">
+                           <button  class="btn btn-default" id="plus"><i class="fas fa-plus"></i></button>
 
                         </div>
                   
-                        <h5>$59</h5>
+                        <h5>$<span id="price">59</span> </h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -80,7 +80,7 @@
          </div>
       </div>
    </section>
-   <script>
+    <script>
              
       /* ------------------------- */
             var getVal = document.getElementById('plusValue')//getting input type value 1
@@ -95,13 +95,11 @@
              plus.addEventListener('click', function(){
       
               defaultVal++ 
-              if(isNaN(defaultVal) || defaultVal <= 0 ){
-                  return 1
-               }else{
+              price  = isNaN(price) ? 1 :price;
               var newPrice=parseFloat(price * defaultVal)
               var nowStartPrice=document.getElementById('subTotal').innerText=newPrice
               var nowTotal= document.getElementById('total').innerText=nowStartPrice
-               }
+               
             })
 /* --------------------------------------------------------------------- */
 
@@ -109,10 +107,9 @@
             var minus=document.getElementById('minus')
            
             minus.addEventListener('click', function(){
+                defaultVal= (defaultVal<=0) ? 1 :defaultVal;
                defaultVal--
-               if(isNaN(defaultVal) || defaultVal <= 0 ){
-                  return 1
-               }else{
+              
                      var price=document.getElementById('price').innerText
                      var lowPrice=parseFloat(price ) *defaultVal
                      var nowTotal= document.getElementById('subTotal').innerText
@@ -125,12 +122,13 @@
 
                
             
-            }
+         
              
           
              })
 
    </script>
+<script src="./script.js"></script>
 </body>
 
 </html>
