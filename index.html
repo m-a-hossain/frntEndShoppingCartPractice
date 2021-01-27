@@ -34,18 +34,7 @@
                      </div>
                   </div>
                </div>
-            <!--    <script>
-                  var btn=document.getElementsByClassName('btn')
-                  for(var i=0; i<btn.length; i++){
-                   var add= btn[i].id=='plus'
-                   if(add){
-                     add.addEventListener('click',function(e){
-                       var clk= event.target
-                        console.log(clk)
-                     })
-                   }
-                  }
-               </script> -->
+         
 
                <div class="cart-item">
                   <div class="row">
@@ -106,10 +95,13 @@
              plus.addEventListener('click', function(){
       
               defaultVal++ 
+              if(isNaN(defaultVal) || defaultVal <= 0 ){
+                  return 1
+               }else{
               var newPrice=parseFloat(price * defaultVal)
               var nowStartPrice=document.getElementById('subTotal').innerText=newPrice
               var nowTotal= document.getElementById('total').innerText=nowStartPrice
-        
+               }
             })
 /* --------------------------------------------------------------------- */
 
