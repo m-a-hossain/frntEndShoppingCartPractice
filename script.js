@@ -9,47 +9,64 @@ remove.addEventListener('click',function(){
 
 //functional way
 function handleProductChange(product,isIncrease){
-  const phoneInput=document.getElementById(product + '-value')
-  const phoneCount = parseInt(phoneInput.value)
- 
+  
+  const productCount = getInputValue(product)
+  console.log(productCount)
+
+  let productNewCount = productCount
   if(isIncrease == true){
-    phoneNewCount = phoneCount+ 1
+    productNewCount = productCount + 1
   }
-  if(isIncrease == false && phoneCount > 0){
-    phoneNewCount = phoneCount -1
+  if(isIncrease == false && productCount > 0){
+    productNewCount = productCount - 1
   }
-  phoneInput.value =phoneNewCount
-  //console.log(phoneNewCount)
-  //const phonTotal= phoneNewCount * 1219
-  let phonTotal =0
-  if(product== 'phon'){
-     phonTotal= phoneNewCount * 1219
+  document.getElementById(product +'-value').value= productNewCount
+
+  let productTotal =0
+  if(product == 'phon'){
+    productTotal= productNewCount * 1219
   }
   if(product == 'case'){
-    phonTotal= phoneNewCount * 59
+    productTotal= productNewCount * 59
   }
-  const newPhoneCount= document.getElementById(product+'-price').innerText = phonTotal
+  document.getElementById(product +'-price').innerText = productTotal
 
   calculateTotal()
 }
 
-function calculateTotal(){
-  const phonVal= document.getElementById('phon-value')
-  const phoneCountValue= parseInt(phonVal.value)
 
-  const caseVal= document.getElementById('case-value')
-  const caseCountValue=parseInt(caseVal.value)
 
-  const toTal = phoneCountValue * 1219 + caseCountValue *59
+ function calculateTotal(){ 
+  let phonVal= getInputValue('phon')
+  console.log(phonVal)
+  let caseVal=getInputValue('case')
+  console.log(caseVal)
+
+  const toTal = (phonVal * 1219) + (caseVal * 59)
   document.getElementById('subTotal').innerText = toTal
 
   const tax=Math.round(toTal * 0.1)
 
   document.getElementById('tax').innerText = tax
+
   const grandTotal= toTal + tax
 
  document.getElementById('total').innerText =grandTotal
+
+} 
+
+function getInputValue(product){
+  console.log(product)
+  const productVal= document.getElementById(product +'-value')
+  const productCountValue= parseInt(productVal.value)
+  return productCountValue
 }
+
+
+
+
+
+
 /* document.getElementById('case-increase').addEventListener('click',function(){
   handleProductChange(true);// a onClick event
 })
